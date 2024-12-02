@@ -6,39 +6,6 @@
     <title>Last Forever</title>
 </head>
 <body>
-    <!-- 引用供应商的 SDK -->
-    <script src="https://virtualhuman-app.oss-cn-beijing.aliyuncs.com/interaction/public/js/sdk/release/xiaoiceRTC1.0.6.js" type="text/javascript">
-    </script>
-
-    <!-- 初始化和使用 SDK -->
-    <script>
-    //const Client = new window.RTCInteraction({
-	//mountClass: "mountClass",
-	//signature: "7f825e2d89f2420d97c79bcd30303bbc",
-	//projectId: "c919078c-ad59-11ef-b08d-d16f32474776",
-	//exclusiveVirtualHumanId:"TPA0001",
-	//onError(errorMes) {
-	//	console.log(errorMes);
-	//},
-	//onInited(res) {
-	//	console.log("inited",res);
-	//	Client.startRTC()
-	//},
-	//onPlayStream(v3Orv4) {
-	//	console.log("play");
-	//	console.log("v3Orv4",v3Orv4);
-	//},
-	//onStopStream() {
-	//	console.log("stop");
-    //},
-	//onTalkStart(talkRes) {
-	//	console.log(talkRes);
-    //},
-	//onTalkEnd(talkRes) {
-	//	console.log(talkRes);
-    //}
-    //});
-    </script>
 </body>
 <script>
     !(function(window){
@@ -49,7 +16,7 @@
     container.id="xiaoice-streaming-container";
     const stylesheet=document.createElement("style");
     const clientWidth=document.body.clientWidth;
-    stylesheet.innerHTML=" #xiaoice-streaming-embed { z-index: 9999; position: fixed; inset: 0px; margin: auto; width: 350px; height: 350px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12); overflow: hidden; } #xiaoice-streaming-embed.horizontal { height: 366px;  width: calc(366px * 16 / 9); border: 0; border-radius: 12px; box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.10); } #xiaoice-streaming-embed.vertical { height: 680px;  width: calc(680px * 9 / 16); border: 0; border-radius: 12px; box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.10); } #xiaoice-streaming-container { width: 100%; height: 100%; } #xiaoice-streaming-container iframe { width: 100%; height: 100%; border: 0; }";
+    stylesheet.innerHTML=" #xiaoice-streaming-embed { z-index: 9999; position: fixed; inset: 0px; margin: auto; width: 300px; height: 300px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12); overflow: hidden; } #xiaoice-streaming-embed.horizontal { height: 366px;  width: calc(366px * 16 / 9); border: 0; border-radius: 12px; box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.10); } #xiaoice-streaming-embed.vertical { height: 680px;  width: calc(680px * 9 / 16); border: 0; border-radius: 12px; box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.10); } #xiaoice-streaming-container { width: 100%; height: 100%; } #xiaoice-streaming-container iframe { width: 100%; height: 100%; border: 0; }";
     const iframe=document.createElement("iframe");
     (iframe.allowFullscreen=!1);
     (iframe.title="Streaming Embed");
