@@ -24,7 +24,15 @@
     (iframe.allow="microphone");
     (iframe.src=url);
     window.addEventListener("message",(e)=>{console.log('e.data.action',e.data.action,e.origin);
-    if(e.origin!==host)return;
+    if(e.origin!==host)return;    
+    if(e.data.action==='start'){if(e.data.ratio==='horizontal'){wrapDiv.classList.toggle("horizontal",true)}else if(e.data.ratio==='vertical'){wrapDiv.classList.toggle("vertical",true)}}else if(e.data.action==='close'){
+        wrapDiv.classList.toggle("horizontal",false);
+        wrapDiv.classList.toggle("vertical",false)}});
+    container.appendChild(iframe);
+    wrapDiv.appendChild(stylesheet);
+    wrapDiv.appendChild(container);
+    document.body.appendChild(wrapDiv)
+    })(globalThis);
     //使用 Web Audio API 主動檢測和切換音頻輸出設備
     navigator.mediaDevices.enumerateDevices().then((devices) => {
     const audioOutputDevices = devices.filter(device => device.kind === "audiooutput");
@@ -36,25 +44,5 @@
     }).catch(error => console.error("Error setting audio output:", error));
     }
     });
-    
-    if(e.data.action==='start'){if(e.data.ratio==='horizontal'){wrapDiv.classList.toggle("horizontal",true)}else if(e.data.ratio==='vertical'){wrapDiv.classList.toggle("vertical",true)}}else if(e.data.action==='close'){
-        wrapDiv.classList.toggle("horizontal",false);
-        wrapDiv.classList.toggle("vertical",false)}});
-    container.appendChild(iframe);
-    wrapDiv.appendChild(stylesheet);
-    wrapDiv.appendChild(container);
-    document.body.appendChild(wrapDiv)
-    })(globalThis);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-    // 初始化音頻流
-    const iframe = document.querySelector("#xiaoice-streaming-container iframe");
-    if (iframe) {
-      iframe.contentWindow.postMessage({ action: "start" }, "*");
-    }
-      }, 1000); // 延遲1秒
-    });
-
 </script>
 </html>
