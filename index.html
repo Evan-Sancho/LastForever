@@ -32,6 +32,13 @@
     wrapDiv.appendChild(stylesheet);
     wrapDiv.appendChild(container);
     document.body.appendChild(wrapDiv)
-    })(globalThis);   
+    })(globalThis);
+    //使用 Web Audio API 主動檢測和切換音頻輸出設備
+    navigator.mediaDevices.enumerateDevices().then((devices) => {
+    const audioOutputDevices = devices.filter(
+    (device) => device.kind === "audiooutput"
+    );
+    console.log("Available audio output devices:", audioOutputDevices);
+    });
 </script>
 </html>
