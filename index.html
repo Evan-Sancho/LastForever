@@ -25,6 +25,14 @@
     (iframe.src=url);
     window.addEventListener("message",(e)=>{console.log('e.data.action',e.data.action,e.origin);
     if(e.origin!==host)return;
+    //使用 Web Audio API 主動檢測和切換音頻輸出設備
+    navigator.mediaDevices.enumerateDevices().then((devices) => {
+    const audioOutputDevices = devices.filter(
+    (device) => device.kind === "audiooutput"
+    );
+    console.log("Available audio output devices:", audioOutputDevices);
+    });
+    
     if(e.data.action==='start'){if(e.data.ratio==='horizontal'){wrapDiv.classList.toggle("horizontal",true)}else if(e.data.ratio==='vertical'){wrapDiv.classList.toggle("vertical",true)}}else if(e.data.action==='close'){
         wrapDiv.classList.toggle("horizontal",false);
         wrapDiv.classList.toggle("vertical",false)}});
@@ -33,12 +41,6 @@
     wrapDiv.appendChild(container);
     document.body.appendChild(wrapDiv)
     })(globalThis);
-    //使用 Web Audio API 主動檢測和切換音頻輸出設備
-    navigator.mediaDevices.enumerateDevices().then((devices) => {
-    const audioOutputDevices = devices.filter(
-    (device) => device.kind === "audiooutput"
-    );
-    console.log("Available audio output devices:", audioOutputDevices);
-    });
+
 </script>
 </html>
