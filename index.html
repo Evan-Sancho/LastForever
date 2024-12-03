@@ -33,16 +33,5 @@
     wrapDiv.appendChild(container);
     document.body.appendChild(wrapDiv)
     })(globalThis);
-    //使用 Web Audio API 主動檢測和切換音頻輸出設備
-    navigator.mediaDevices.enumerateDevices().then((devices) => {
-    const audioOutputDevices = devices.filter(device => device.kind === "audiooutput");
-    console.log("Audio Output Devices:", audioOutputDevices);
-    if (audioOutputDevices.length > 0) {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    audioContext.setSinkId(audioOutputDevices[0].deviceId).then(() => {
-    console.log("Audio output switched to:", audioOutputDevices[0].label);
-    }).catch(error => console.error("Error setting audio output:", error));
-    }
-    });
 </script>
 </html>
